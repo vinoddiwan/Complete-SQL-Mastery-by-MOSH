@@ -4,8 +4,8 @@ SELECT * FROM clients;
 SELECT * FROM invoices; -- each client can buy multiple stuff
 
 -- total purchased by each client
-SELECT
-	  c.client_id,
+SELECT  
+    c.client_id,
     c.name,
     SUM(invoice_total) AS total_sales
 FROM clients c
@@ -16,7 +16,7 @@ GROUP BY client_id, name;
 -- Using Views
 CREATE VIEW sales_by_client AS
 SELECT
-	  c.client_id,
+    c.client_id,
     c.name,
     SUM(invoice_total) AS total_sales
 FROM clients c
