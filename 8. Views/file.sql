@@ -48,8 +48,8 @@ SELECT * FROM invoices;
 
 CREATE VIEW clients_balance AS
 SELECT c.client_id,
-		c.name,
-        SUM(invoice_total - payment_total) as balance
+       c.name,
+       SUM(invoice_total - payment_total) as balance
 FROM clients c
 JOIN invoices i using(client_id)
 GROUP BY client_id, name;
