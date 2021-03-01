@@ -1,4 +1,5 @@
-USE sql_store
+
+--USE sql_store
 
 -- find products that are more expensive than Lettuce (id=3)
 SELECT *
