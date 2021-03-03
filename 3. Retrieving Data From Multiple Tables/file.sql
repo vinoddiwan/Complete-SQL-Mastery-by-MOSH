@@ -26,6 +26,22 @@ SELECT * FROM products;
 
 
 ------------------------------------------------------
+-- Joining across Database
+
+-- sql_store DB selected
+SELECT *
+FROM order_items oi
+JOIN sql_inventory.products p         -- sql_inventory external DB
+     ON oi.product_id = p.product_id;
+
+-- sql_inventory DB selected
+SELECT *
+FROM sql_store.order_items oi         -- sql_store external DB
+JOIN products p
+	ON oi.product_id = p.product_id;
+
+
+
 
 
 
