@@ -42,6 +42,33 @@ JOIN products p
 
 
 
+-- Joining multiple tables
+--  observe 3 tables
+DESCRIBE customers;
+DESCRIBE orders;
+DESCRIBE order_statuses;
+
+SELECT 
+    o.order_id,
+    o.order_date,
+    c.first_name,
+    c.last_name,
+    os.name AS status
+    
+FROM orders o        -- orders, customers table join
+JOIN customers c
+	ON o.customer_id = c.customer_id
+
+JOIN order_statuses os    -- orders, order_statuses join
+	ON o.status = os.order_status_id;
+
+-- Exercise
+
+
+
+
+
+
 
 
 
