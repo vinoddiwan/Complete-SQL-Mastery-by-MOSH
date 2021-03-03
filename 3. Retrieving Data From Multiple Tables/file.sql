@@ -63,6 +63,26 @@ JOIN order_statuses os    -- orders, order_statuses join
 	ON o.status = os.order_status_id;
 
 -- Exercise
+-- observe 3 Tables
+DESCRIBE payments;
+DESCRIBE payment_methods;
+DESCRIBE clients;
+
+SELECT * FROM payments;
+
+-- Show clients name, payments and payment methods
+SELECT 
+	c.name,
+	p.amount,
+    	pm.name
+    
+FROM payments p  -- Join with payment and client
+JOIN clients c
+	ON p.client_id = c.client_id
+
+JOIN payment_methods pm -- -- Join with payment and payment_methods
+	ON p.payment_method = pm.payment_method_id;
+
 
 
 
