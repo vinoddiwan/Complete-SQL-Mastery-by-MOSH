@@ -84,6 +84,50 @@ JOIN payment_methods pm -- -- Join with payment and payment_methods
 	ON p.payment_method = pm.payment_method_id;
 
 
+-- Outer Join
+-- Observer the result we get only users who ordered the products
+SELECT 
+	c.customer_id,
+    	c.first_name,
+   	o.order_id
+FROM customers c
+JOIN orders o
+	ON c.customer_id = o.customer_id
+ORDER BY c.customer_id;  -- 10 records
+
+
+SELECT 
+	count( distinct c.customer_id) -- 6 records
+FROM customers c
+JOIN orders o
+	ON c.customer_id = o.customer_id
+order by c.customer_id;
+
+
+SELECT count(*) FROM customers; -- 10 total customers
+
+
+-- now all customers with null order id also
+SELECT 
+	c.customer_id,
+   	c.first_name,
+        o.order_id
+FROM customers c
+LEFT JOIN orders o     -- left join
+	ON c.customer_id = o.customer_id
+ORDER BY c.customer_id;
+
+-- Exercise
+SELECT 
+	p.product_id,
+	p.name,
+	oi.quantity
+FROM products p
+LEFT JOIN order_items oi
+ON p.product_id = oi.product_id;
+
+
+
 
 
 
