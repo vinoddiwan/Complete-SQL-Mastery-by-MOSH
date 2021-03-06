@@ -32,6 +32,21 @@ WHERE product_id NOT IN (
       FROM order_items
       );
 
+-- Exercise
+-- Find clients without invoices
+SELECT 
+	client_id, name
+FROM clients 
+WHERE client_id NOT IN
+	  (SELECT DISTINCT client_id 
+      FROM invoices);
+
+-- subquery vs join
+-- Find clients without invoices using join
+SELECT *
+FROM clients
+LEFT JOIN invoices USING(client_id)
+WHERE invoice_id IS NULL;
 
 
 
