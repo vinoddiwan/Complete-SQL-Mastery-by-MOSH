@@ -52,6 +52,31 @@ WHERE invoice_id IS NULL;
 
 
 
+-- ALL Keyword
+-- Select invoices larger than all the invoices of client_id = 3
+
+-- make it simpler one by one
+SELECT *
+FROM invoices
+WHERE client_id = 3;
+
+SELECT MAX(invoice_total)  -- subquery
+FROM invoices
+WHERE client = 3;
+
+SELECT * 
+FROM invoices
+WHERE invoices_total > (
+			SELECT MAX(invoice_total)  -- subquery
+			FROM invoices
+			WHERE client = 3;
+			)
+
+
+
+
+
+
 
 
 
