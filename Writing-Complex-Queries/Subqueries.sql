@@ -20,7 +20,7 @@ WHERE salary > (SELECT AVG(salary) FROM employees);
 
 
 
--- Writing Subqueries Using IN Operator
+--45 Writing Subqueries Using IN Operator
 USE sql_store;
 
 -- Find the products that have never been ordered
@@ -41,6 +41,8 @@ WHERE client_id NOT IN
 	  (SELECT DISTINCT client_id 
       FROM invoices);
 
+
+
 -- subquery vs join
 -- Find clients without invoices using join
 SELECT *
@@ -52,7 +54,7 @@ WHERE invoice_id IS NULL;
 
 
 
--- ALL Keyword
+-- 47. ALL Keyword
 -- Select invoices larger than all the invoices of client_id = 3
 
 -- make it simpler one by one
@@ -66,11 +68,20 @@ WHERE client = 3;
 
 SELECT * 
 FROM invoices
-WHERE invoices_total > (
+WHERE invoice_total > (
 			SELECT MAX(invoice_total)  -- subquery
 			FROM invoices
-			WHERE client = 3;
-			)
+			WHERE client = 3
+			);
+
+-- Using all keyword
+SELECT * 
+FROM invoices
+WHERE invoices_total > ALL (		-- all values of subqueries will be compared with each row of table
+	SELECT invoice_total
+	FROM invoice
+	WHERE client_id = 3
+	);
 
 
 
